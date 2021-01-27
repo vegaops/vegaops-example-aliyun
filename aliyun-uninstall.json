@@ -1,0 +1,20 @@
+{
+  "componentId": "container_bz6rmv",
+  "nodes": [
+    {
+      "componentId": "instance-1",
+      "action": "uninstall",
+      "vars": {
+        "instanceId": "xxxxxx"
+      },
+      "nodeType": "instance"
+    }
+  ],
+  "vendor": "aliyun",
+  "credentials": {
+    "key": "XXXX",
+    "secret": "XXXX",
+    "zoneId": "cn-qingdao-b",
+    "regionId": "cn-qingdao"
+  }
+}

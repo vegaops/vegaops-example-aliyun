@@ -1,0 +1,18 @@
+{
+  "componentId": "container_bz6rmv",
+  "version": "1.0",
+  "nodes": [
+    {
+      "componentId": "instance-1",
+      "action": "list",
+      "nodeType": "instance"
+    }
+  ],
+  "vendor": "aliyun",
+  "credentials": {
+    "key": "XXXX",
+    "secret": "XXXX",
+    "zoneId": "cn-qingdao-b",
+    "regionId": "cn-qingdao"
+  }
+}
