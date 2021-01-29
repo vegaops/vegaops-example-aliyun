@@ -2,15 +2,34 @@
   "componentId": "container_bz6rmv",
   "nodes": [
     {
+      "componentId": "flavor-1",
+      "action": "available",
+      "nodeType": "flavor",
+      "vars": {
+        "cpus": "1",
+        "memorySize": "1"
+      }
+    },
+    {
+      "componentId": "image-1",
+      "action": "list",
+      "nodeType": "image",
+      "vars": {
+        "pageSize": "1",
+        "listOnlyOne": "true",
+        "instanceType": "&flavor-1.flavorList?.get(0).get('instanceTypeId')"
+      }
+    },
+    {
       "componentId": "instance-1",
       "action": "install",
       "vars": {
         "instanceChargeType": "PostPaid",
         "period": "1",
-        "imageId": "win2008r2_sp1_x64_ent_zh-cn_40G_alibase_20200116.vhd",
+        "imageId": "&image-1.imagesList?.get(0)['imageId']",
         "internetMaxBandwidthOut": "1",
         "VSwitchId": "vsw-m5en5097ejq2o83tacvua",
-        "flavorId": "ecs.n1.tiny",
+        "flavorId": "&flavor-1.flavorList?.get(0).get('instanceTypeId')",
         "systemDiskCategory": "cloud_efficiency",
         "systemDiskSize": "40",
         "periodUnit": "Month",

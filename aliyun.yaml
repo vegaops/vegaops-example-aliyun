@@ -1,30 +1,40 @@
----
-componentId:    container_bz6rmv
+componentId: container_bz6rmv
 nodes:
-  -
-    componentId: instance-1
-    action:     install
-    vars:
-      instanceChargeType:      PostPaid
-      period:                  '1'
-      imageId:                 win2008r2_sp1_x64_ent_zh-cn_40G_alibase_20200116.vhd
-      internetMaxBandwidthOut: '1'
-      VSwitchId:               vsw-m5en5097ejq2o83tacvua
-      flavorId:                ecs.n1.tiny
-      systemDiskCategory:      cloud_efficiency
-      systemDiskSize:          '40'
-      periodUnit:              Month
-      password:                root123.
-      internetChargeType:      PayByTraffic
-      vpcId:                   vpc-m5equcdv7xl4kfffsj1yg
-      name:                    instance-1
-      securityGroups:          sg-m5e2sets6t35sze2j3pt
-    nodeType:    instance
-vendor:         aliyun
-version:         1.0
+- componentId: flavor-1
+  action: available
+  vars:
+    memorySize: '1'
+    cpus: '1'
+  nodeType: flavor
+- componentId: image-1
+  action: list
+  vars:
+    listOnlyOne: 'true'
+    instanceType: '&flavor-1.flavorList?.get(0).get(''instanceTypeId'')'
+    pageSize: '1'
+  nodeType: image
+- componentId: instance-1
+  action: install
+  vars:
+    instanceChargeType: PostPaid
+    period: '1'
+    imageId: '&image-1.imagesList?.get(0)[''imageId'']'
+    internetMaxBandwidthOut: '1'
+    VSwitchId: vsw-m5en5097ejq2o83tacvua
+    flavorId: '&flavor-1.flavorList?.get(0).get(''instanceTypeId'')'
+    systemDiskCategory: cloud_efficiency
+    systemDiskSize: '40'
+    periodUnit: Month
+    password: root123.
+    internetChargeType: PayByTraffic
+    vpcId: vpc-m5equcdv7xl4kfffsj1yg
+    name: instance-1
+    securityGroups: sg-m5e2sets6t35sze2j3pt
+  nodeType: instance
+vendor: aliyun
+version: '1.0'
 credentials:
-  key:      XXXX
-  secret:   XXXX
-  zoneId:   cn-qingdao-b
   regionId: cn-qingdao
-
+  zoneId: cn-qingdao-b
+  secret: XXXX
+  key: XXXX
