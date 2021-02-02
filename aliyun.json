@@ -1,34 +1,56 @@
 {
+  //申明container的componentId
   "componentId": "container_bz6rmv",
+  //定义container中的节点
   "nodes": [
     {
+      //申明节点的componentId
       "componentId": "flavor-1",
+      //申明对当前节点的操作类型
       "action": "available",
+      //申明当前节点的类型，引擎将根据此类型去找相应的驱动模板
       "nodeType": "flavor",
+      //申明当前节点需要的变量，vars中的key要在驱动模板中能找到相关的引用，否则就是多余的
       "vars": {
+        //定义驱动模板中的cpus变量值为1
         "cpus": "1",
+        //定义驱动模板中的memorySize变量值为1
         "memorySize": "1"
       }
     },
     {
+      //申明节点的componentId
       "componentId": "image-1",
+      //申明对当前节点的操作类型
       "action": "list",
+      //申明当前节点的类型，引擎将根据此类型去找相应的驱动模板
       "nodeType": "image",
+      //申明当前节点需要的变量，vars中的key要在驱动模板中能找到相关的引用，否则就是多余的
       "vars": {
+        //定义驱动模板中的pageSize变量值为1
         "pageSize": "1",
+        //定义驱动模板中的listOnlyOne变量值为true
         "listOnlyOne": "true",
+        //定义驱动模板中的instanceType变量值为【节点flavor-1的输出结果变量中的flavorList并对其作SPEL表达式运算】
         "instanceType": "&flavor-1.flavorList?.get(0).get('instanceTypeId')"
       }
     },
     {
+      //申明节点的componentId
       "componentId": "instance-1",
+      //申明当前节点的类型，引擎将根据此类型去找相应的驱动模板
+      "nodeType": "instance",
+      //申明对当前节点的操作类型
       "action": "install",
+      //申明当前节点需要的变量，vars中的key要在驱动模板中能找到相关的引用，否则就是多余的
       "vars": {
         "instanceChargeType": "PostPaid",
         "period": "1",
+        //定义驱动模板中的imageId变量值为【节点image-1的输出结果变量中的imagesList并对其作SPEL表达式运算】
         "imageId": "&image-1.imagesList?.get(0)['imageId']",
         "internetMaxBandwidthOut": "1",
         "VSwitchId": "vsw-m5en5097ejq2o83tacvua",
+        //定义驱动模板中的flavorId变量值为【节点flavor-1的输出结果变量中的flavorList并对其作SPEL表达式运算】
         "flavorId": "&flavor-1.flavorList?.get(0).get('instanceTypeId')",
         "systemDiskCategory": "cloud_efficiency",
         "systemDiskSize": "40",
@@ -38,12 +60,14 @@
         "vpcId": "vpc-m5equcdv7xl4kfffsj1yg",
         "name": "instance-1",
         "securityGroups": "sg-m5e2sets6t35sze2j3pt"
-      },
-      "nodeType": "instance"
+      }
     }
   ],
+  //申明当前container的驱动厂商是aliyun
   "vendor": "aliyun",
+  //申明要使用的驱动模板版本号为1.0
   "version": "1.0",
+  //验证信息（必填）
   "credentials": {
     "key": "XXXX",
     "secret": "XXXX",

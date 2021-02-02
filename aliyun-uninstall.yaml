@@ -1,0 +1,13 @@
+componentId: container_bz6rmv
+nodes:
+- componentId: instance-1
+  action: uninstall
+  vars:
+    instanceId: xxxxxx
+  nodeType: instance
+vendor: aliyun
+credentials:
+  regionId: cn-qingdao
+  zoneId: cn-qingdao-b
+  secret: XXXX
+  key: XXXX
